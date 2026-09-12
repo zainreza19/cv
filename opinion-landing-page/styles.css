@@ -24,6 +24,10 @@
   --shadow-soft: 0 20px 45px -25px rgba(17, 24, 39, 0.25);
   --shadow-card: 0 10px 30px -18px rgba(17, 24, 39, 0.18);
   --container: 1160px;
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-mono: "Space Mono", "SFMono-Regular", monospace;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -36,24 +40,65 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   color: var(--navy);
   background: var(--ivory);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Paper-grain overlay — the tactile, editorial layer that keeps flat colour
+   fields from feeling like generic SaaS gradients. Pure CSS/SVG, no image. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, h4 {
-  font-family: "Manrope", "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.08;
   margin: 0 0 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+}
+
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  font-weight: 500;
 }
 
 p {
   margin: 0 0 16px;
   color: var(--text-muted);
+}
+
+/* Mono label — used for eyebrows, tags, step numbers: the "editorial index
+   card" accent that keeps the display serif from feeling too soft. */
+.mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.underline-accent {
+  position: relative;
+  white-space: nowrap;
+}
+
+.underline-accent svg {
+  position: absolute;
+  left: -2%;
+  bottom: -0.22em;
+  width: 104%;
+  height: 0.3em;
+  color: var(--gold);
 }
 
 a {
@@ -81,12 +126,17 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold-dark);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  padding: 5px 12px 5px 8px;
+  border: 1px solid rgba(214,168,79,0.4);
+  border-radius: 999px;
+  background: rgba(214,168,79,0.08);
 }
 
 .section-head {
@@ -96,7 +146,7 @@ section {
 }
 
 .section-head h2 {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(30px, 4.4vw, 44px);
 }
 
 .section-head p {
@@ -116,12 +166,21 @@ section {
   font-size: 15px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
 }
 
+.btn .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
 .btn:active {
-  transform: translateY(1px);
+  transform: scale(0.97);
 }
 
 .btn-primary {
@@ -132,6 +191,7 @@ section {
 .btn-primary:hover {
   background: var(--gold-dark);
   box-shadow: 0 10px 24px -10px rgba(214, 168, 79, 0.6);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -141,7 +201,9 @@ section {
 }
 
 .btn-secondary:hover {
-  background: var(--ivory-deep);
+  background: var(--navy);
+  color: var(--ivory);
+  transform: translateY(-2px);
 }
 
 .btn-ghost-light {
@@ -184,18 +246,27 @@ section {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  font-size: 20px;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 22px;
   color: var(--navy);
 }
 
 .logo .dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--gold);
+  transform: translateY(-2px);
+}
+
+.main-nav a {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .main-nav {
@@ -205,8 +276,7 @@ section {
 }
 
 .main-nav a {
-  font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--navy);
 }
 
@@ -284,10 +354,6 @@ section {
 
 /* Hero mockup */
 
-.hero-visual {
-  position: relative;
-}
-
 .mock-window {
   background: var(--white);
   border: 1px solid var(--border);
@@ -320,18 +386,18 @@ section {
   color: var(--white);
   border-radius: var(--radius-md);
   padding: 18px 20px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
   margin-bottom: 18px;
 }
 
 .mock-question span {
   display: block;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 8px;
@@ -579,9 +645,9 @@ section {
 }
 
 .step .step-num {
-  font-family: "Manrope", sans-serif;
-  font-size: 34px;
-  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
   color: var(--gold);
   margin-bottom: 14px;
   opacity: 0.9;
@@ -810,8 +876,10 @@ section {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Manrope", sans-serif;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
   margin-bottom: 18px;
   color: var(--white);
 }
@@ -1094,6 +1162,246 @@ section {
   color: #8b93a3;
 }
 
+.footer-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--text-on-navy);
+}
+
+/* =========================================================
+   Personality layer — texture, motion, hand-built accents
+   ========================================================= */
+
+/* Hero decorative blobs (pure CSS, no image asset) */
+
+.hero-visual {
+  position: relative;
+  margin: 26px 20px 0;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
+  filter: blur(2px);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.hero-blob-1 {
+  width: 220px;
+  height: 220px;
+  background: var(--gold);
+  opacity: 0.35;
+  top: -46px;
+  right: -36px;
+}
+
+.hero-blob-2 {
+  width: 160px;
+  height: 160px;
+  background: var(--blue);
+  opacity: 0.18;
+  bottom: -34px;
+  left: -30px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.hero-sticker {
+  position: absolute;
+  top: -22px;
+  left: -22px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transform: rotate(-6deg);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-sticker svg { color: var(--gold); }
+
+/* Rotated "stamped" feel on badges throughout the page */
+
+.badge {
+  transform: rotate(-1.4deg);
+}
+
+.badge:nth-child(2n) {
+  transform: rotate(1.2deg);
+}
+
+.mock-tags .badge:nth-child(3n) {
+  transform: rotate(-0.6deg);
+}
+
+/* Card lift + tilt on hover — replaces static cards with a touch of life */
+
+.card,
+.audience-card,
+.usecase-card,
+.step,
+.opinion-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover,
+.audience-card:hover,
+.usecase-card:hover {
+  transform: translateY(-5px) rotate(-0.4deg);
+  box-shadow: var(--shadow-card);
+  border-color: var(--gold);
+}
+
+.step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(214,168,79,0.5);
+  background: rgba(248,244,236,0.07);
+}
+
+/* ---------- Marquee ticker ---------- */
+
+.ticker {
+  background: var(--navy);
+  border-top: 1px solid rgba(248,244,236,0.1);
+  border-bottom: 1px solid rgba(248,244,236,0.1);
+  overflow: hidden;
+  padding: 18px 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  animation: ticker-scroll 32s linear infinite;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-on-navy);
+  white-space: nowrap;
+}
+
+.ticker-item strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.ticker-item .sep { color: var(--amber); }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  .reveal { transition: none; }
+}
+
+/* ---------- Diagonal section cut (navy How-it-works section) ---------- */
+
+.diagonal-top {
+  position: relative;
+}
+
+.diagonal-top::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: inherit;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  transform: translateY(-59px);
+}
+
+/* ---------- Pull-quote breaker ---------- */
+
+.statement {
+  background: var(--navy);
+  color: var(--ivory);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.statement .quote-mark {
+  width: 54px;
+  height: 54px;
+  color: var(--gold);
+  margin: 0 auto 12px;
+  opacity: 0.85;
+}
+
+.statement blockquote {
+  margin: 0 auto;
+  max-width: 780px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 4.2vw, 42px);
+  line-height: 1.28;
+  color: var(--white);
+}
+
+.statement blockquote em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.statement .statement-blob {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+  background: var(--gold);
+  opacity: 0.08;
+  top: -140px;
+  right: -120px;
+}
+
+.statement .statement-blob.b2 {
+  background: var(--blue);
+  top: auto;
+  right: auto;
+  bottom: -160px;
+  left: -140px;
+  width: 320px;
+  height: 320px;
+}
+
+/* ---------- Illustrated icon frames (problem / audience) ---------- */
+
+.illus {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 /* ---------- Reveal animation ---------- */
 
 .reveal {
@@ -1131,6 +1439,9 @@ section {
   }
 
   .main-nav { display: none; }
+
+  .hero-blob-1 { width: 150px; height: 150px; }
+  .hero-blob-2 { width: 110px; height: 110px; }
 }
 
 @media (max-width: 640px) {
@@ -1153,4 +1464,16 @@ section {
   .waitlist-form { padding: 24px; }
 
   .nav-toggle { display: block; }
+
+  .hero-visual { margin: 34px 8px 0; }
+  .hero-sticker { font-size: 10px; padding: 8px 12px; top: -16px; left: -10px; }
+  .hero-blob-1 { width: 110px; height: 110px; right: -20px; }
+  .hero-blob-2 { width: 90px; height: 90px; left: -16px; }
+
+  .ticker-item { font-size: 11.5px; gap: 24px; }
+  .ticker-item, .ticker-track { gap: 24px; }
+
+  .statement blockquote { font-size: 24px; }
+  .statement .statement-blob { width: 220px; height: 220px; }
+  .statement .statement-blob.b2 { width: 180px; height: 180px; }
 }

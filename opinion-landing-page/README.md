@@ -26,7 +26,27 @@ AI-powered analysis to help people understand complex questions.
 | Soft Green | `#6BAA75` | Consensus / agreement |
 | Muted Amber | `#C9822B` | Disagreement / debate |
 
-Fonts: **Manrope** (headings), **Inter** (body) — loaded from Google Fonts.
+Fonts: **Fraunces** (display/headings — an expressive serif for editorial warmth
+and personality), **Space Mono** (eyebrows, badges, nav, step numbers — a
+technical/editorial counterweight), **Inter** (body). All loaded from Google
+Fonts.
+
+## Personality details
+
+To keep this from reading as another templated AI-SaaS page, a few
+hand-built (no external image assets) touches were layered on:
+
+- A subtle CSS/SVG paper-grain overlay across the whole page
+- Custom two-tone SVG illustrations for the problem and audience cards
+  (megaphone, hollow speech bubble, buried stack; people cluster, expert
+  seal, org bars) instead of generic line icons
+- A scrolling marquee ticker of example questions
+- A diagonal cut into the "How it works" section instead of a straight edge
+- Soft blurred CSS blobs and a rotated "Now building" sticker behind the
+  hero mockup
+- A bold italic pull-quote breaker between the audience and contribution
+  quality sections
+- Rotated "stamped" badges and cards that lift/tilt slightly on hover
 
 ## Waitlist form
 
