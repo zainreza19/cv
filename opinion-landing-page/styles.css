@@ -4,30 +4,34 @@
    ========================================================= */
 
 :root {
-  --navy: #111827;
-  --navy-soft: #1f2937;
-  --ivory: #f8f4ec;
-  --ivory-deep: #f1ead9;
-  --gold: #d6a84f;
-  --gold-dark: #bd9140;
-  --blue: #3b82f6;
-  --green: #6baa75;
-  --amber: #c9822b;
+  /* Editorial "ink & ember" palette — warm near-black instead of cold
+     corporate navy, a vivid ember accent instead of the ubiquitous
+     gold/blue SaaS pairing. Variable names are kept from the original
+     brand brief for continuity; the hex values are the new palette. */
+  --navy: #17130f;
+  --navy-soft: #241d16;
+  --ivory: #f6f1e4;
+  --ivory-deep: #ece1c8;
+  --gold: #e2572b;
+  --gold-dark: #c2451e;
+  --blue: #2f5de3;
+  --green: #4f7942;
+  --amber: #b9862e;
   --white: #ffffff;
-  --border: #e7e0d2;
-  --text-muted: #5b6472;
-  --text-on-navy: #cbd3e1;
+  --border: #e4d9be;
+  --text-muted: #6b6255;
+  --text-on-navy: #d8cfbf;
 
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 24px;
-  --shadow-soft: 0 20px 45px -25px rgba(17, 24, 39, 0.25);
-  --shadow-card: 0 10px 30px -18px rgba(17, 24, 39, 0.18);
+  --shadow-soft: 0 20px 45px -25px rgba(23, 19, 15, 0.25);
+  --shadow-card: 0 10px 30px -18px rgba(23, 19, 15, 0.18);
   --container: 1160px;
 
-  --font-display: "Fraunces", "Iowan Old Style", serif;
-  --font-mono: "Space Mono", "SFMono-Regular", monospace;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Boska", "Iowan Old Style", serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
+  --font-body: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -134,9 +138,9 @@ section {
   color: var(--gold-dark);
   margin-bottom: 18px;
   padding: 5px 12px 5px 8px;
-  border: 1px solid rgba(214,168,79,0.4);
+  border: 1px solid rgba(226,87,43,0.4);
   border-radius: 999px;
-  background: rgba(214,168,79,0.08);
+  background: rgba(226,87,43,0.08);
 }
 
 .section-head {
@@ -190,7 +194,7 @@ section {
 
 .btn-primary:hover {
   background: var(--gold-dark);
-  box-shadow: 0 10px 24px -10px rgba(214, 168, 79, 0.6);
+  box-shadow: 0 10px 24px -10px rgba(226, 87, 43, 0.6);
   transform: translateY(-2px);
 }
 
@@ -208,12 +212,12 @@ section {
 
 .btn-ghost-light {
   background: transparent;
-  border-color: rgba(248, 244, 236, 0.4);
+  border-color: rgba(246, 241, 228, 0.4);
   color: var(--white);
 }
 
 .btn-ghost-light:hover {
-  background: rgba(248, 244, 236, 0.1);
+  background: rgba(246, 241, 228, 0.1);
 }
 
 .btn-block {
@@ -231,7 +235,7 @@ section {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 244, 236, 0.85);
+  background: rgba(246, 241, 228, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -374,7 +378,7 @@ section {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #d9cfb8;
+  background: #cdbe98;
 }
 
 .mock-body {
@@ -430,9 +434,9 @@ section {
   justify-content: center;
 }
 
-.mock-source.people .icon { background: rgba(59,130,246,0.12); color: var(--blue); }
-.mock-source.experts .icon { background: rgba(214,168,79,0.18); color: var(--gold-dark); }
-.mock-source.ai .icon { background: rgba(107,170,117,0.16); color: var(--green); }
+.mock-source.people .icon { background: rgba(47,93,227,0.12); color: var(--blue); }
+.mock-source.experts .icon { background: rgba(226,87,43,0.18); color: var(--gold-dark); }
+.mock-source.ai .icon { background: rgba(79,121,66,0.16); color: var(--green); }
 
 .mock-output {
   border: 1px solid var(--border);
@@ -470,11 +474,11 @@ section {
 
 .badge svg { width: 13px; height: 13px; }
 
-.badge-expert { background: rgba(214,168,79,0.18); color: var(--gold-dark); }
-.badge-evidence { background: rgba(59,130,246,0.12); color: var(--blue); }
-.badge-consensus { background: rgba(107,170,117,0.18); color: #3f6d47; }
-.badge-divided { background: rgba(201,130,43,0.16); color: var(--amber); }
-.badge-ai { background: rgba(17,24,39,0.06); color: var(--navy); }
+.badge-expert { background: rgba(226,87,43,0.18); color: var(--gold-dark); }
+.badge-evidence { background: rgba(47,93,227,0.12); color: var(--blue); }
+.badge-consensus { background: rgba(79,121,66,0.18); color: #35502a; }
+.badge-divided { background: rgba(185,134,46,0.16); color: var(--amber); }
+.badge-ai { background: rgba(23,19,15,0.06); color: var(--navy); }
 .badge-quality { background: var(--navy); color: var(--ivory); }
 
 /* ---------- Problem ---------- */
@@ -519,10 +523,10 @@ section {
 }
 
 .icon-navy { background: var(--navy); color: var(--ivory); }
-.icon-gold { background: rgba(214,168,79,0.2); color: var(--gold-dark); }
-.icon-blue { background: rgba(59,130,246,0.14); color: var(--blue); }
-.icon-amber { background: rgba(201,130,43,0.16); color: var(--amber); }
-.icon-green { background: rgba(107,170,117,0.18); color: #3f6d47; }
+.icon-gold { background: rgba(226,87,43,0.2); color: var(--gold-dark); }
+.icon-blue { background: rgba(47,93,227,0.14); color: var(--blue); }
+.icon-amber { background: rgba(185,134,46,0.16); color: var(--amber); }
+.icon-green { background: rgba(79,121,66,0.18); color: #35502a; }
 
 .problem-card h3 {
   font-size: 19px;
@@ -638,8 +642,8 @@ section {
 
 .step {
   position: relative;
-  background: rgba(248,244,236,0.04);
-  border: 1px solid rgba(248,244,236,0.12);
+  background: rgba(246,241,228,0.04);
+  border: 1px solid rgba(246,241,228,0.12);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
 }
@@ -669,7 +673,7 @@ section {
   margin-top: 14px;
   padding: 10px 12px;
   border-radius: 10px;
-  background: rgba(248,244,236,0.06);
+  background: rgba(246,241,228,0.06);
   font-size: 13px;
   font-style: italic;
   color: var(--white);
@@ -772,8 +776,8 @@ section {
   background: linear-gradient(90deg, var(--gold), var(--gold-dark));
 }
 
-.meter.blue > div { background: linear-gradient(90deg, #6ea8fb, var(--blue)); }
-.meter.green > div { background: linear-gradient(90deg, #92c99b, var(--green)); }
+.meter.blue > div { background: linear-gradient(90deg, #7d95f0, var(--blue)); }
+.meter.green > div { background: linear-gradient(90deg, #8fae7c, var(--green)); }
 
 .quality-signals {
   margin: 28px 0 0;
@@ -800,7 +804,7 @@ section {
   margin-top: 24px;
   padding: 14px 16px;
   border-left: 3px solid var(--amber);
-  background: rgba(201,130,43,0.08);
+  background: rgba(185,134,46,0.08);
   border-radius: 0 10px 10px 0;
   font-size: 13.5px;
   color: var(--navy);
@@ -1090,8 +1094,8 @@ section {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(107,170,117,0.15);
-  color: #3f6d47;
+  background: rgba(79,121,66,0.15);
+  color: #35502a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1106,7 +1110,7 @@ section {
   background: var(--navy);
   color: var(--text-on-navy);
   padding: 56px 0 28px;
-  border-top: 1px solid rgba(248,244,236,0.08);
+  border-top: 1px solid rgba(246,241,228,0.08);
 }
 
 .footer-top {
@@ -1116,7 +1120,7 @@ section {
   flex-wrap: wrap;
   gap: 32px;
   padding-bottom: 32px;
-  border-bottom: 1px solid rgba(248,244,236,0.1);
+  border-bottom: 1px solid rgba(246,241,228,0.1);
   margin-bottom: 24px;
 }
 
@@ -1159,7 +1163,7 @@ section {
   flex-wrap: wrap;
   gap: 12px;
   font-size: 13px;
-  color: #8b93a3;
+  color: #9c9280;
 }
 
 .footer-tagline {
@@ -1264,16 +1268,16 @@ section {
 
 .step:hover {
   transform: translateY(-4px);
-  border-color: rgba(214,168,79,0.5);
-  background: rgba(248,244,236,0.07);
+  border-color: rgba(226,87,43,0.5);
+  background: rgba(246,241,228,0.07);
 }
 
 /* ---------- Marquee ticker ---------- */
 
 .ticker {
   background: var(--navy);
-  border-top: 1px solid rgba(248,244,236,0.1);
-  border-bottom: 1px solid rgba(248,244,236,0.1);
+  border-top: 1px solid rgba(246,241,228,0.1);
+  border-bottom: 1px solid rgba(246,241,228,0.1);
   overflow: hidden;
   padding: 18px 0;
 }

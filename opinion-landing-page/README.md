@@ -17,29 +17,45 @@ AI-powered analysis to help people understand complex questions.
 
 ## Brand
 
+"Ink & Ember" palette — a warm near-black instead of corporate navy, and a
+vivid ember accent instead of the common gold/blue SaaS pairing. (CSS
+variable names in `styles.css` keep their original labels — `--navy`,
+`--gold`, etc. — for continuity; only the hex values changed.)
+
 | Token | Hex | Use |
 |---|---|---|
-| Deep Navy | `#111827` | Headings, header/footer, dark sections |
-| Warm Ivory | `#F8F4EC` | Page background |
-| Insight Gold | `#D6A84F` | Primary CTA, expert/value accents |
-| Calm Blue | `#3B82F6` | AI-related UI, links |
-| Soft Green | `#6BAA75` | Consensus / agreement |
-| Muted Amber | `#C9822B` | Disagreement / debate |
+| Ink | `#17130F` | Headings, header/footer, dark sections |
+| Paper | `#F6F1E4` | Page background |
+| Ember | `#E2572B` | Primary CTA, key accents |
+| Cobalt | `#2F5DE3` | AI-related UI, links |
+| Moss | `#4F7942` | Consensus / agreement |
+| Ochre | `#B9862E` | Disagreement / debate |
 
-Fonts: **Fraunces** (display/headings — an expressive serif for editorial warmth
-and personality), **Space Mono** (eyebrows, badges, nav, step numbers — a
-technical/editorial counterweight), **Inter** (body). All loaded from Google
-Fonts.
+Fonts — deliberately **not** Google Fonts, sourced from a different type
+library so the page doesn't share a font stack with every other AI/SaaS
+site:
+- **Boska** (display/headings, via [Fontshare](https://fontshare.com)) — an
+  elegant, expressive serif for editorial warmth and personality
+- **JetBrains Mono** (eyebrows, badges, nav, step numbers, via
+  [Fontsource](https://fontsource.org) on jsDelivr) — a technical
+  counterweight to the serif
+- **General Sans** (body, via Fontshare) — a clean modern sans, an
+  alternative to Inter
 
-## Personality details
+## Personality & icon system
 
-To keep this from reading as another templated AI-SaaS page, a few
-hand-built (no external image assets) touches were layered on:
+To keep this from reading as another templated AI-SaaS page:
 
-- A subtle CSS/SVG paper-grain overlay across the whole page
+- Every generic "everyone's icon library" glyph (the Heroicons-style
+  check-circle, sparkle/star, person, shield and search icons that show up
+  on nearly every Tailwind/shadcn site) was swapped for a custom-drawn
+  equivalent: a rotated diamond-check, a hand-drawn asterisk/spark, a
+  three-dot "people" cluster, an elongated badge mark, and a hand-drawn
+  question mark
 - Custom two-tone SVG illustrations for the problem and audience cards
   (megaphone, hollow speech bubble, buried stack; people cluster, expert
-  seal, org bars) instead of generic line icons
+  seal, org bars)
+- A subtle CSS/SVG paper-grain overlay across the whole page
 - A scrolling marquee ticker of example questions
 - A diagonal cut into the "How it works" section instead of a straight edge
 - Soft blurred CSS blobs and a rotated "Now building" sticker behind the
@@ -47,6 +63,14 @@ hand-built (no external image assets) touches were layered on:
 - A bold italic pull-quote breaker between the audience and contribution
   quality sections
 - Rotated "stamped" badges and cards that lift/tilt slightly on hover
+
+**Note on the font CDNs:** Fontshare and jsDelivr are both reliable, widely
+used public services, but they were not reachable for visual verification
+from this sandboxed build environment (only fonts.googleapis.com was
+allowed through its network policy) — the fallback stacks (`serif`,
+`sans-serif`, `monospace` system fonts) render correctly either way, so the
+page never breaks, but do a quick visual check once it's live to confirm
+Boska/General Sans/JetBrains Mono are the faces you see.
 
 ## Waitlist form
 
